@@ -3,9 +3,10 @@ This is a repository for codes and template data of paper ["**RAMP-CNN: A Novel 
 
 Please cite our paper with below bibtex when you find the codes useful.
 ```
-@ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  journal={IEEE Sensors Journal},   
-title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   year={2021},  volume={21},  
-number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
+@ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
+journal={IEEE Sensors Journal},   
+title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   
+year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 ```
 
 ## Software requirement
