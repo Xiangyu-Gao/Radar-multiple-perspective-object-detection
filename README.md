@@ -1,5 +1,5 @@
 # Radar_multiple_perspective_object_detection
-This is a repository for codes and template data of paper ["***RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**"](https://arxiv.org/pdf/2011.08981.pdf)
+This is a repository for codes and template data of paper ["**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**"](https://arxiv.org/pdf/2011.08981.pdf)
 
 Please cite our paper with below bibtex when you find the codes useful.
 ```
