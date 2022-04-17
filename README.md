@@ -17,7 +17,12 @@ Python 3.6, Tensorflow 2.0, Jupyter Notebook
     ```
     ./config/get_params_value.m
     ```
-3. Select the input data ('pms1000_30fs.mat', 'bms1000_30fs.mat' or 'cms1000_30fs.mat') in script:
+3. Prepare the data and ground truth:
     ```
-    generate_ra_3dfft.m
+    python prepare_data.py -m train -dd './data/'
+    python prepare_data.py -m test -dd './data/'
+    ```
+4. Run training:
+    ```
+    python train.py -m HG -dd /mnt/ssd2/rodnet/data_refine/ -ld /mnt/ssd2/rodnet/checkpoints/ -sm -md HG-20200122-104604
     ```
