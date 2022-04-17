@@ -13,7 +13,11 @@ year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2
 Python 3.6, pytorch-1.5.1, Jupyter Notebook
 
 ## Run codes for generating range-angle maps, range-Doppler maps, and 3D point clouds
-1. Customize your testbed/FMCW parameter in script: 
+1. Download sample data and model:
+    ```
+    https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
+    ```
+3. Customize your testbed/FMCW parameter in script: 
     ```
     ./config/get_params_value.m
     ```
@@ -40,4 +44,8 @@ Python 3.6, pytorch-1.5.1, Jupyter Notebook
     epoch 1, iter 2: loss: 8551.98437500 | load time: 0.0509 | backward time: 2.9038
     epoch 1, iter 3: loss: 8019.63525391 | load time: 0.0531 | backward time: 2.9171
     epoch 1, iter 4: loss: 8376.16015625 | load time: 0.0518 | backward time: 2.9146
+    ```
+5. Run testing:
+    ```
+    python test.py -m C3D -md C3D-20200904-001923
     ```
