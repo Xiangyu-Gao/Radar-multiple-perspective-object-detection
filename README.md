@@ -10,7 +10,7 @@ year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2
 ```
 
 ## Software requirement
-Python 3.6, Tensorflow 2.0, Jupyter Notebook
+Python 3.6, pytorch-1.5.1, Jupyter Notebook
 
 ## Run codes for generating range-angle maps, range-Doppler maps, and 3D point clouds
 1. Customize your testbed/FMCW parameter in script: 
@@ -24,5 +24,5 @@ Python 3.6, Tensorflow 2.0, Jupyter Notebook
     ```
 4. Run training:
     ```
-    python train.py -m HG -dd /mnt/ssd2/rodnet/data_refine/ -ld /mnt/ssd2/rodnet/checkpoints/ -sm -md HG-20200122-104604
+    python train_dop.py -m C3D
     ```
