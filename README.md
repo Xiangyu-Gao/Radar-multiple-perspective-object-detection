@@ -26,3 +26,18 @@ Python 3.6, pytorch-1.5.1, Jupyter Notebook
     ```
     python train_dop.py -m C3D
     ```
+    You will get training as below
+    ```
+    No data augmentation
+    Number of sequences to train: 1
+    Training files length: 111
+    Window size: 16
+    Number of epoches: 100
+    Batch size: 3
+    Number of iterations in each epoch: 37
+    Cyclic learning rate
+    epoch 1, iter 1: loss: 8441.85839844 | load time: 0.0571 | backward time: 3.1147
+    epoch 1, iter 2: loss: 8551.98437500 | load time: 0.0509 | backward time: 2.9038
+    epoch 1, iter 3: loss: 8019.63525391 | load time: 0.0531 | backward time: 2.9171
+    epoch 1, iter 4: loss: 8376.16015625 | load time: 0.0518 | backward time: 2.9146
+    ```
