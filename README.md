@@ -12,7 +12,7 @@ year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2
 ## Software requirement
 Python 3.6, pytorch-1.5.1, Jupyter Notebook
 
-## Run codes for generating range-angle maps, range-Doppler maps, and 3D point clouds
+## 3D slice
 1. Download sample data and model:
     ```
     https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
@@ -21,6 +21,8 @@ Python 3.6, pytorch-1.5.1, Jupyter Notebook
     ```
     ./config/get_params_value.m
     ```
+## Radar Data Augmentation
+## Train and Test
 3. Prepare the data and ground truth:
     ```
     python prepare_data.py -m train -dd './data/'
