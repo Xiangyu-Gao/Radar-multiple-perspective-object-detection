@@ -49,3 +49,7 @@ Python 3.6, pytorch-1.5.1, Jupyter Notebook
     ```
     python test.py -m C3D -md C3D-20200904-001923
     ```
+6. Run evaluate:
+    ```
+    python evaluate.py -md C3D-20200904-001923
+    ```
