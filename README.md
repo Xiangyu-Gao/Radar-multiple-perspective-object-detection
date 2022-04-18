@@ -33,7 +33,7 @@ for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-sign
     './results/C3D-20200904-001923'
     ```
 
-3. Prepare the input data and ground truth confidence map for training and testing:
+3. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing:
     ```
     python prepare_data.py -m train -dd './data/'
     python prepare_data.py -m test -dd './data/'
