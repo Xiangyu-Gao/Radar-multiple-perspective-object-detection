@@ -14,16 +14,18 @@ Python 3.6, pytorch-1.5.1, Jupyter Notebook
 
 ## 3D slice
 for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification
-1. Download sample data and model:
-    ```
-    https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
-    ```
+
 3. Customize your testbed/FMCW parameter in script: 
     ```
     ./config/get_params_value.m
     ```
 ## Radar Data Augmentation
 ## Train and Test
+1. Download sample data and model from the Google Drive with below link:
+    ```
+    https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
+    ```
+   Note that we select part of our training and testing set for your use here and the provided model was trainied with whole complete training set. You may use the   above slicing algorithm with 3DFFT data to create your own training and testing set.
 3. Prepare the data and ground truth:
     ```
     python prepare_data.py -m train -dd './data/'
