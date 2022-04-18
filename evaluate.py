@@ -17,8 +17,8 @@ from config import test_sets
 rng_grid = confmap2ra(radar_configs, 'range')
 agl_grid = confmap2ra(radar_configs, 'angle')
 
-olsThrs = np.around(np.linspace(0.5, 0.9, np.round((0.9 - 0.5) / 0.05) + 1, endpoint=True), decimals=2)
-recThrs = np.around(np.linspace(0.0, 1.00, np.round((1.00 - 0.0) / 0.01) + 1, endpoint=True), decimals=2)
+olsThrs = np.around(np.linspace(0.5, 0.9, int(np.round((0.9 - 0.5) / 0.05) + 1), endpoint=True), decimals=2)
+recThrs = np.around(np.linspace(0.0, 1.00, int(np.round((1.00 - 0.0) / 0.01) + 1), endpoint=True), decimals=2)
 
 
 def parse_args():
@@ -64,7 +64,6 @@ def load_rodnet_res(filename):
 
 
 def load_vgg_res(filename):
-
     with open(filename, 'r') as df:
         data = df.readlines()
 
@@ -101,7 +100,6 @@ def load_vgg_res(filename):
 
 
 def convert_gt_for_eval(obj_info_list):
-
     rng_grid = confmap2ra(radar_configs, 'range')
     agl_grid = confmap2ra(radar_configs, 'angle')
 
@@ -147,7 +145,6 @@ def compute_ols_dts_gts(gts_dict, dts_dict, imgId, catId):
 
 
 def evaluate_img(gts_dict, dts_dict, imgId, catId, olss_dict, log=False):
-
     gts = gts_dict[imgId, catId]
     dts = dts_dict[imgId, catId]
     if len(gts) == 0 and len(dts) == 0:
@@ -229,7 +226,6 @@ def evaluate_img(gts_dict, dts_dict, imgId, catId, olss_dict, log=False):
 
 
 def accumulate(evalImgs, n_frame, log=True):
-
     T = len(olsThrs)
     R = len(recThrs)
     K = n_class
@@ -258,12 +254,6 @@ def accumulate(evalImgs, n_frame, log=True):
 
         if log:
             print("%10s: %4d dets, %4d gts" % (class_table[classid], dtm.shape[1], gtm.shape[1]))
-
-        # dtIg = np.concatenate([e['dtIgnore'] for e in E], axis=1)
-        # gtIg = np.concatenate([e['gtIgnore'] for e in E])
-        # npig = np.count_nonzero(gtIg == 0)
-        # if npig == 0:
-        #     continue
 
         tps = np.array(dtm, dtype=bool)
         fps = np.logical_not(dtm)
@@ -314,7 +304,6 @@ def accumulate(evalImgs, n_frame, log=True):
 
 
 def summarize(eval, gl=True):
-
     def _summarize(eval=eval, ap=1, olsThr=None):
 
         iStr = ' {:<18} {} @[ OLS={:<9} ] = {:0.4f}'
@@ -395,7 +384,7 @@ def summarize(eval, gl=True):
 if __name__ == '__main__':
     """
     Example:
-        python evaluate.py -md HG-20200122-104604 -rd /mnt/ssd2/rodnet/results/
+        python evaluate.py -md C3D-20200904-001923 -rd ./results/
     """
     args = parse_args()
     data_root = '/mnt/nas_crdataset'
@@ -408,16 +397,8 @@ if __name__ == '__main__':
     root_dir = test_sets['root_dir']
     dates = test_sets['dates']
     seqs = test_sets['seqs']
-    cam_annos = test_sets['cam_anno']
 
-    easy_sets = ['2019_05_28_bm1s011', '2019_05_28_bm1s012', '2019_05_28_bm1s013', '2019_05_28_bm1s014',
-                 '2019_05_28_cs1s005', '2019_05_28_cs1s006',
-                 '2019_05_28_pm2s012', '2019_05_28_pm2s013', '2019_05_28_pm2s014', ]
-    mid_sets  = ['2019_05_28_bs1s006', '2019_05_28_cm1s009', '2019_05_28_cm1s011', '2019_05_28_cm1s012',
-                 '2019_05_28_cm1s013', '2019_05_28_cs1s004', '2019_05_28_pbms006', ]
-    hard_sets = ['2019_05_28_cm1s010', '2019_05_28_mlms005', '2019_05_28_pcms004',
-                 '2019_09_18_onrd004', '2019_09_18_onrd009']
-
+    easy_sets = ['2019_05_28_pm2s012']
     evalImgs_all = []
     evalImgs_easy = []
     evalImgs_mid = []
@@ -428,125 +409,58 @@ if __name__ == '__main__':
     n_frames_hard = 0
     ols_list = []
 
-    # print('1111111111111')
+    seq_names = sorted(os.listdir(os.path.join(rodnet_res_folder, model_name)))
+    for seq_name in seq_names:
+        if seq_name[0:2] != '20':
+            continue
+        print('true seq')
+        date = seq_name[:10]
+        seq_path = os.path.join(data_root, date, seq_name)
+        rodnet_res_path = os.path.join(rodnet_res_folder, model_name, seq_name, 'rod_res.txt')
 
-    if True:
-        # seq_names = ['2019_05_28_cm1s010']
-        seq_names = sorted(os.listdir(os.path.join(rodnet_res_folder, model_name)))
-        for seq_name in seq_names:
-            if seq_name[0:2] != '20':
-                continue
-            print('true seq')
-            date = seq_name[:10]
-            seq_path = os.path.join(data_root, date, seq_name)
-            rodnet_res_path = os.path.join(rodnet_res_folder, model_name, seq_name, 'rod_res.txt')
+        try:
+            print(rodnet_res_path)
+            dts_dict, n_frame_dts = load_rodnet_res(rodnet_res_path)
+        except:
+            dts_dict, n_frame_dts = load_vgg_res(rodnet_res_path)
 
-            try:
-                print(rodnet_res_path)
-                dts_dict, n_frame_dts = load_rodnet_res(rodnet_res_path)
-            except:
-                dts_dict, n_frame_dts = load_vgg_res(rodnet_res_path)
+        # gts_dict, n_frame_gts = load_gt_labels(GT_LABEL_NAME)
+        obj_info_list = read_ra_labels_csv(seq_path)
 
-            # gts_dict, n_frame_gts = load_gt_labels(GT_LABEL_NAME)
-            obj_info_list = read_ra_labels_csv(seq_path)
+        gts_dict, n_frame_gts = convert_gt_for_eval(obj_info_list)
+        n_frame = min(n_frame_dts, n_frame_gts)
 
-            gts_dict, n_frame_gts = convert_gt_for_eval(obj_info_list)
-            n_frame = min(n_frame_dts, n_frame_gts)
+        olss_all = {(imgId, catId): compute_ols_dts_gts(gts_dict, dts_dict, imgId, catId) \
+                    for imgId in range(n_frame)
+                    for catId in range(n_class)}
 
-            olss_all = {(imgId, catId): compute_ols_dts_gts(gts_dict, dts_dict, imgId, catId) \
-                        for imgId in range(n_frame)
-                        for catId in range(n_class)}
+        for olss in list(olss_all.values()):
+            if len(olss) > 0:
+                olss_max_gt = np.amax(olss, axis=0)
+                cur_olss = list(np.ravel(np.squeeze(olss_max_gt)))
+                ols_list.extend(cur_olss)
 
-            for olss in list(olss_all.values()):
-                if len(olss) > 0:
-                    olss_max_gt = np.amax(olss, axis=0)
-                    cur_olss = list(np.ravel(np.squeeze(olss_max_gt)))
-                    ols_list.extend(cur_olss)
+        evalImgs = [evaluate_img(gts_dict, dts_dict, imgId, catId, olss_all)
+                    for imgId in range(n_frame)
+                    for catId in range(n_class)]
 
-            evalImgs = [evaluate_img(gts_dict, dts_dict, imgId, catId, olss_all)
-                        for imgId in range(n_frame)
-                        for catId in range(n_class)]
+        eval = accumulate(evalImgs, n_frame, log=False)
+        stats = summarize(eval, gl=False)
 
-            eval = accumulate(evalImgs, n_frame, log=False)
-            stats = summarize(eval, gl=False)
-
-            if seq_name in easy_sets:
-                n_frames_easy += n_frame
-                evalImgs_easy.extend(evalImgs)
-            elif seq_name in mid_sets:
-                n_frames_mid += n_frame
-                evalImgs_mid.extend(evalImgs)
-            elif seq_name in hard_sets:
-                n_frames_hard += n_frame
-                evalImgs_hard.extend(evalImgs)
-            else:
-                n_frames_easy += n_frame
-                evalImgs_easy.extend(evalImgs)
-
-            n_frames_all += n_frame
-            evalImgs_all.extend(evalImgs)
-
-    else:
-        for dateid, date in enumerate(dates):
-            seq_names = seqs[dateid]
-            if seq_names is None:
-                seq_names = sorted(os.listdir(os.path.join(root_dir, date)))
-            cam_anno = cam_annos[dateid]
-
-            for seq_name in seq_names:
-                print(seq_name)
-                date = seq_name[:10]
-                seq_path = os.path.join(data_root, date, seq_name)
-                rodnet_res_path = os.path.join(rodnet_res_folder, model_name, seq_name, 'rod_res.txt')
-
-                dts_dict, n_frame_dts = load_rodnet_res(rodnet_res_path)
-
-                if not cam_anno:
-                    # gts_dict, n_frame_gts = load_gt_labels(GT_LABEL_NAME)
-                    obj_info_list = read_ra_labels_csv(seq_path)
-                else:
-                    obj_info_list = []
-                    radar_mat_names = sorted(os.listdir(os.path.join(seq_path, rodnet_configs['data_folder'])))
-                    n_data = len(radar_mat_names)
-                    ra_frame_offset = calculate_frame_offset(os.path.join(seq_path, 'start_time.txt'))[0]
-                    start_id = int(float(radar_mat_names[0].split('.')[0].split('_')[-1]))
-                    if ra_frame_offset > 0:
-                        # remove exposure at beginning
-                        ra_frame_offset += 40
-                        n_data -= ra_frame_offset
-                        start_id = 40
-                    for real_id in range(start_id, n_data + start_id):
-                        obj_info = read_3d_labels_txt(seq_path, real_id)
-                        obj_info_list.append(obj_info)
-
-                gts_dict, n_frame_gts = convert_gt_for_eval(obj_info_list)
-                n_frame = min(n_frame_dts, n_frame_gts)
-
-                olss_all = {(imgId, catId): compute_ols_dts_gts(gts_dict, dts_dict, imgId, catId) \
-                            for imgId in range(n_frame)
-                            for catId in range(n_class)}
-
-                for olss in list(olss_all.values()):
-                    if len(olss) > 0:
-                        olss_max_gt = np.amax(olss, axis=0)
-                        cur_olss = list(np.ravel(np.squeeze(olss_max_gt)))
-                        ols_list.extend(cur_olss)
-
-                evalImgs = [evaluate_img(gts_dict, dts_dict, imgId, catId, olss_all)
-                            for imgId in range(n_frame)
-                            for catId in range(n_class)]
-                n_frames_all += n_frame
-                evalImgs_all.extend(evalImgs)
+        if seq_name in easy_sets:
+            n_frames_easy += n_frame
+            evalImgs_easy.extend(evalImgs)
+        n_frames_all += n_frame
+        evalImgs_all.extend(evalImgs)
 
     eval = accumulate(evalImgs_all, n_frames_all)
     stats = summarize(eval)
 
     eval = accumulate(evalImgs_easy, n_frames_easy)
     stats = summarize(eval)
-    eval = accumulate(evalImgs_mid, n_frames_mid)
-    stats = summarize(eval)
-    eval = accumulate(evalImgs_hard, n_frames_hard)
-    stats = summarize(eval)
+    # eval = accumulate(evalImgs_mid, n_frames_mid)
+    # stats = summarize(eval)
+    # eval = accumulate(evalImgs_hard, n_frames_hard)
+    # stats = summarize(eval)
 
     # visualize_ols_hist(ols_list)
-

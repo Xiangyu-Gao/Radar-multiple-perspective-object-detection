@@ -6,7 +6,7 @@ import time
 import argparse
 from multiprocessing import Pool
 
-from config import data_sets, train_sets, valid_sets, test_sets, supertest_sets
+from config import data_sets, train_sets, valid_sets, test_sets
 from config import radar_configs, rodnet_configs
 from utils import str2bool
 from utils.visualization import visualize_radar_chirp, visualize_radar_chirps
@@ -115,9 +115,7 @@ def debug_preprocess(path, chirpid):
 
 
 if __name__ == "__main__":
-
     args = parse_args()
-
     PARA = args.para
     RARA_NUM = args.n_para
     N_PARA_CHIRP = args.n_para_chirp    # number of chirps to process at once
@@ -126,8 +124,6 @@ if __name__ == "__main__":
 
     root_dir = data_sets['root_dir']
     sets_dates = data_sets['dates']
-    # root_dir = supertest_sets['root_dir']
-    # sets_dates = supertest_sets['dates']
     ramap_rsize = radar_configs['ramap_rsize']
     ramap_asize = radar_configs['ramap_asize']
     n_chirps = radar_configs['n_chirps']

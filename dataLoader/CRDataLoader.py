@@ -31,10 +31,8 @@ class CRDataLoader():
         self.shobj_info_array = Array(ctypes.c_long, 3 * rodnet_configs['max_dets'] * num_parallel_batch * batch_size)  # 3 for obj_info
         self.num_parallel_batch = num_parallel_batch
 
-
     def __len__(self):
         return self.length
-
 
     def __iter__(self):
         random.shuffle(self.loading_seq)
@@ -81,7 +79,6 @@ class CRDataLoader():
                   torch.from_numpy(shradarnp_va[index_num, :data_length, : ,: ,:, :]), torch.from_numpy(shconfnp[index_num, :data_length, : ,: ,:, :]), \
                   obj_info, shindex_arraynp[index_num, :data_length].astype(int)
 
-
     def getBatch(self, shradar_ra, shradar_rv, shradar_va, shconf, shindex_array, shobj_info_array, loading_seq, index):
         results = self.dataset.getBatch(loading_seq)
         shradarnp_ra = np.frombuffer(shradar_ra.get_obj())
@@ -108,7 +105,6 @@ class CRDataLoader():
         else:
             results = self.dataset.getBatchObjInfo(self.loading_seq[self.batch_size * index: self.batch_size * (index + 1)])
         return results
-
 
     def __getitem__(self, index):
         if self.restart:

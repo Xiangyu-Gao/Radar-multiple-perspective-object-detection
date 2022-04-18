@@ -6,9 +6,7 @@ from config import rodnet_configs
 
 
 if __name__ == "__main__":
-
     win_size = rodnet_configs['win_size']
-
     crdata_train = CRDataset('./data/data_details', './data/confmaps_gt', win_size=win_size, set_type='valid')
     seq_names = crdata_train.seq_names
     index_mapping = crdata_train.index_mapping

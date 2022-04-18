@@ -7,7 +7,7 @@ from random import randint, random
 from utils.mappings import confmap2ra
 from utils import find_nearest
 from config import radar_configs
-from dataPrepare.relocate_dataset import produce_RA_slice
+from slice3d import produce_RA_slice
 
 
 Max_trans_agl = 20

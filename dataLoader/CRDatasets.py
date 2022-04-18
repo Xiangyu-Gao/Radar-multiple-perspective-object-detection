@@ -73,12 +73,8 @@ class CRDataset(data.Dataset):
             this_seq_confmap = self.confmaps[seq_id]
 
         if self.is_random:
-            if self.seq_names[seq_id][0:10] == '2020_00_00':
-                chirp_id = 0
-                chirp_id2 = 128
-            else:
-                chirp_id = random.randint(0, int((radar_configs['n_chirps'] - 1) / 2))
-                chirp_id2 = chirp_id + int((radar_configs['n_chirps'] - 1) / 2)
+            chirp_id = 0
+            chirp_id2 = 128
         else:
             chirp_id = 0
 
@@ -266,15 +262,10 @@ class CRDatasetSM(data.Dataset):
             this_seq_confmap = pickle.load(open(os.path.join(self.confmap_dir, self.set_type, self.confmap_files[seq_id]), 'rb'))
 
         if self.is_random:
-            if self.seq_names[seq_id][0:10] == '2020_00_00':
-                chirp_id = 0
-                chirp_id2 = 128
-            else:
-                chirp_id = random.randint(0, int((radar_configs['n_chirps']-1)/2))
-                chirp_id2 = chirp_id + int((radar_configs['n_chirps']-1)/2)
-        else:
             chirp_id = 0
             chirp_id2 = 128
+        else:
+            chirp_id = 0
 
         ramap_rsize = radar_configs['ramap_rsize']
         ramap_asize = radar_configs['ramap_asize']
