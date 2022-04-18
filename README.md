@@ -9,10 +9,10 @@ title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Rec
 year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 ```
 
+Incomplete. continue to update
+
 ## Software requirement
 Python 3.6, pytorch-1.5.1, Jupyter Notebook
-
-Incomplete. continue to update
 
 ## 3D slice
 for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification
