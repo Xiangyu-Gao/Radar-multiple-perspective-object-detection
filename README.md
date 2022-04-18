@@ -26,6 +26,13 @@ for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-sign
     https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
     ```
    Note that we select part of our training and testing set for your use here and the provided model was trainied with whole complete training set. You may use the   above slicing algorithm with 3DFFT data to create your own training and testing set.
+
+2. Decompress downloaded fiels and Put the decompressed sample data and trained model in certain folder as follow:
+    ```
+    './template_files/data'
+    './results/C3D-20200904-001923'
+    ```
+
 3. Prepare the data and ground truth:
     ```
     python prepare_data.py -m train -dd './data/'
