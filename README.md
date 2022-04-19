@@ -19,7 +19,7 @@ for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-sign
 
 3. Customize your testbed/FMCW parameter in script: 
     ```
-    ./config/get_params_value.m
+    python slice3d.py
     ```
 ## Radar Data Augmentation
 ## Train and Test
