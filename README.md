@@ -2,7 +2,7 @@
 
 Automotive Radar Object Recognition Using Range-Velocity-Angle (RVA) Heatmap Sequences
 
-<p align="center"> <img src='docs/grap_abs.png' align="center" height="230px"> </p>
+<p align="center"> <img src='docs/grap_abs.png' align="center" height="300px"> </p>
 
 > [**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**](https://arxiv.org/pdf/2011.08981.pdf),            
 > Xiangyu Gao, Guanbin Xing, Sumit Roy, and Hui Liu
