@@ -1,7 +1,12 @@
 # Radar_multiple_perspective_object_detection
+
+Automotive Radar Object Recognition by Processing of the Range-Velocity-Angle (RVA) heatmap sequences.
+
+
 This is a repository for codes and template data of paper ["**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**"](https://arxiv.org/pdf/2011.08981.pdf)
 
-Please cite our paper with below bibtex if you find provided codes useful.
+Please cite our paper with below bibtex if you find!
+ provided codes useful.
 ```
 @ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
 journal={IEEE Sensors Journal},   
