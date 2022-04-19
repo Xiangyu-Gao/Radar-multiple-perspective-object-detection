@@ -48,6 +48,8 @@ for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-sign
     ```
     python slice3d.py
     ```
+<p align="center"> <img src='docs/slice_viz.png' align="center" height="300px"> </p>
+
 ## Radar Data Augmentation
 ## Train and Test
 1. Download sample data and model from the Google Drive with below link:
