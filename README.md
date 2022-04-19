@@ -127,10 +127,13 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     ```
 
 ## Radar Data Augmentation
-    
+Run below codes to check the results of 3 proposed data augmentation algorithms: flip, range-translation, and angle-translation.
+
     python data_aug.py
-The slicing results are the RA slices, RV slices, and VA slices as shown in below figure.
+
+Below figure shows the performance of doing 10-bins range-translation (move upword), 25-degrees angle-translation (move right word), and angle flip on original RA images.
 <p align="center"> <img src='docs/aug_viz.png' align="center" height="230px"> </p>
+
 ## License
 
 RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
