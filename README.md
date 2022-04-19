@@ -6,7 +6,7 @@ Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-An
 
 > [**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**](https://arxiv.org/pdf/2011.08981.pdf),            
 > Xiangyu Gao, Guanbin Xing, Sumit Roy, and Hui Liu
-> *arXiv technical report ([arXiv 2006.11275](https://arxiv.org/abs/2011.08981))*  
+> *arXiv technical report ([arXiv 2011.08981](https://arxiv.org/abs/2011.08981))*  
 
     @ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
         journal={IEEE Sensors Journal},   
