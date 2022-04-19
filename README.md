@@ -131,7 +131,7 @@ Run below codes to check the results of 3 proposed data augmentation algorithms:
 
     python data_aug.py
 
-Below figure shows the performance of doing 10-bins range-translation (move upword), 25-degrees angle-translation (move right word), and angle flip on original RA images.
+Below figure shows the performance of doing 10-bins range-translation (move upword), 25-degrees angle-translation (move right word), and angle flip on original RA images. You may use this codes to develop your radar data augmentation and even generate new datas. 
 <p align="center"> <img src='docs/aug_viz.png' align="center" height="230px"> </p>
 
 ## License
