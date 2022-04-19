@@ -49,18 +49,14 @@ For convenience, in the sample codes we use the [Range FFT result](https://githu
     python slice3d.py
     
 
-The slicing resulsts are the RA slices, RV slices, and VA slices as shown in below figure.
+The slicing results are the RA slices, RV slices, and VA slices as shown in below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
 ## Radar Data Augmentation
     To be continue ..
 
 ## Train and Test
-1. Download sample data and model from the Google Drive with below link:
-    Note that we select part of our training and testing set for your use here and the provided model was trainied with whole complete training set. You may use below slicing algorithm with 3DFFT data to create your own training and testing set.
-2. 
-
-3. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing:
+1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing:
     ```
     python prepare_data.py -m train -dd './data/'
     python prepare_data.py -m test -dd './data/'
@@ -69,7 +65,7 @@ The slicing resulsts are the RA slices, RV slices, and VA slices as shown in bel
     ```
     python train_dop.py -m C3D
     ```
-    You will get training as below
+    You will get training outputs as follows:
     ```
     No data augmentation
     Number of sequences to train: 1
@@ -83,14 +79,51 @@ The slicing resulsts are the RA slices, RV slices, and VA slices as shown in bel
     epoch 1, iter 2: loss: 8551.98437500 | load time: 0.0509 | backward time: 2.9038
     epoch 1, iter 3: loss: 8019.63525391 | load time: 0.0531 | backward time: 2.9171
     epoch 1, iter 4: loss: 8376.16015625 | load time: 0.0518 | backward time: 2.9146
+    ...
     ```
 5. Run testing:
     ```
     python test.py -m C3D -md C3D-20200904-001923
     ```
-6. Run evaluate:
+    You will get testing outputs as follows:
+    ```
+    ['2019_05_28_pm2s012']
+    2019_05_28_pm2s012
+    Length of testing data: 443
+    loading time: 0.02
+    finished ra normalization
+    finished v normalization
+    Testing 2019_05_28_pm2s012/000000-000016... (0)
+    2019_05_28_pm2s012/0000000000.jpg inference finished in 0.6654 seconds.
+    processing time: 0.98
+    loading time: 0.02
+    finished ra normalization
+    finished v normalization
+    Testing 2019_05_28_pm2s012/000002-000018... (0)
+    2019_05_28_pm2s012/0000000002.jpg inference finished in 0.4723 seconds.
+    ...
+    ```
+6. Run evaluation:
     ```
     python evaluate.py -md C3D-20200904-001923
+    ```
+    You will get evaluation outputs as follows:
+    ```
+    true seq
+    ./results/C3D-20200904-001923/2019_05_28_pm2s012/rod_res.txt
+    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9245
+    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9701
+    pedestrian: 1930 dets, 1800 gts
+    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9245
+    Average Precision  (AP) @[ OLS=0.50      ] = 0.9823
+    Average Precision  (AP) @[ OLS=0.60      ] = 0.9823
+    Average Precision  (AP) @[ OLS=0.70      ] = 0.9520
+    Average Precision  (AP) @[ OLS=0.80      ] = 0.9234
+    Average Precision  (AP) @[ OLS=0.90      ] = 0.7349
+    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9701
+    Average Recall     (AR) @[ OLS=0.50      ] = 1.0000
+    Average Recall     (AR) @[ OLS=0.75      ] = 0.9850
+    ...
     ```
 
 ## License
