@@ -1,6 +1,6 @@
-# Radar_multiple_perspective_object_detection
+# Radar Multiple-Perspective Object Detection
 
-Automotive Radar Object Recognition Using Range-Velocity-Angle (RVA) Heatmap Sequences
+Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-Angle (RVA) Heatmap Sequences
 
 <p align="center"> <img src='docs/grap_abs.png' align="center" height="300px"> </p>
 
