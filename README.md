@@ -142,3 +142,4 @@ RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
 This project is not possible without multiple great opensourced codebases. We list some notable examples below.  
 
 * [microDoppler](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification)
+* [rodnet](https://github.com/yizhou-wang/RODNet)
