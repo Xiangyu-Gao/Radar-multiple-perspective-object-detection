@@ -41,16 +41,17 @@ Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up
     './results/C3D-20200904-001923'
     ```
 
-## 3D slice
-for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification
+## 3D Slicing of Range-Velocity-Angle Data
+for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification. All radar configurations and algorithm configurations are included in [config](config.py).
 
-3. Customize your testbed/FMCW parameter in script: 
+    Customize your testbed/FMCW parameter in script: 
     ```
     python slice3d.py
     ```
-<p align="center"> <img src='docs/slice_viz.png' align="center" height="300px"> </p>
+<p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
 ## Radar Data Augmentation
+    To be continue ..
 ## Train and Test
 1. Download sample data and model from the Google Drive with below link:
     Note that we select part of our training and testing set for your use here and the provided model was trainied with whole complete training set. You may use below slicing algorithm with 3DFFT data to create your own training and testing set.
