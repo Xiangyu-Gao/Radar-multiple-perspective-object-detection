@@ -45,10 +45,10 @@ Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up
 
 ## 3D Slicing of Range-Velocity-Angle Data
 For convenience, in the sample codes we use the [Range FFT result](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) as input and perform the Velocity and Angle FFT during the process of slicing. Run following codes for 3D slicing.
-    ```
-    python slice3d.py
-    ```
     
+    python slice3d.py
+    
+
 The slicing resulsts are the RA slices, RV slices, and VA slices as shown in below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
