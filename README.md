@@ -1,4 +1,4 @@
-# Radar Multiple-Perspective Object Detection
+# Radar Multiple Perspective Object Detection
 
 Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-Angle (RVA) Heatmap Sequences
 
@@ -55,16 +55,13 @@ For convenience, in the sample codes we use the [Range FFT result](https://githu
 The slicing results are the RA slices, RV slices, and VA slices as shown in below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
-## Radar Data Augmentation
-    To be continue ..
-
 ## Train and Test
 1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing:
     ```
     python prepare_data.py -m train -dd './data/'
     python prepare_data.py -m test -dd './data/'
     ```
-4. Run training:
+2. Run training:
     ```
     python train_dop.py -m C3D
     ```
@@ -84,7 +81,7 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     epoch 1, iter 4: loss: 8376.16015625 | load time: 0.0518 | backward time: 2.9146
     ...
     ```
-5. Run testing:
+3. Run testing:
     ```
     python test.py -m C3D -md C3D-20200904-001923
     ```
@@ -106,7 +103,7 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     2019_05_28_pm2s012/0000000002.jpg inference finished in 0.4723 seconds.
     ...
     ```
-6. Run evaluation:
+4. Run evaluation:
     ```
     python evaluate.py -md C3D-20200904-001923
     ```
@@ -129,6 +126,11 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     ...
     ```
 
+## Radar Data Augmentation
+    
+    python data_aug.py
+The slicing results are the RA slices, RV slices, and VA slices as shown in below figure.
+<p align="center"> <img src='docs/aug_viz.png' align="center" height="230px"> </p>
 ## License
 
 RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
