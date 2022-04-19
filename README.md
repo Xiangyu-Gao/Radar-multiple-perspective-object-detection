@@ -2,22 +2,19 @@
 
 Automotive Radar Object Recognition by Processing of the Range-Velocity-Angle (RVA) heatmap sequences.
 
+<p align="center"> <img src='docs/grap_abs.png' align="center" height="230px"> </p>
 
-This is a repository for codes and template data of paper ["**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**"](https://arxiv.org/pdf/2011.08981.pdf)
+> [**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**](https://arxiv.org/pdf/2011.08981.pdf),            
+> Xiangyu Gao, Guanbin Xing, Sumit Roy and Hui Liu
+> *arXiv technical report ([arXiv 2006.11275](https://arxiv.org/abs/2011.08981))*  
 
-Please cite our paper with below bibtex if you find!
- provided codes useful.
-```
-@ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
-journal={IEEE Sensors Journal},   
-title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   
-year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
-```
-
-Incomplete. continue to update
+    @ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
+        journal={IEEE Sensors Journal},   
+        title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   
+        year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 
 ## Software requirement
-Python 3.6, pytorch-1.5.1, Jupyter Notebook
+Python 3.6, pytorch-1.5.1
 
 ## 3D slice
 for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification
