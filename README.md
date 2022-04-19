@@ -27,7 +27,7 @@ In this paper, we propose a novel radar multiple-perspectives convolutional neur
 
 ## Use RAMP-CNN
 
-Please find all radar configurations and algorithm configurations are included in [config](config.py).
+All radar configurations and algorithm configurations are included in [config](config.py).
 
 ### Software Requirement and Installation
 
