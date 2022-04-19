@@ -1,13 +1,14 @@
-import numpy as np
-import matplotlib.pyplot as plt
 import torch
 import math
-import scipy.io as spio
+import pickle
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+
 from random import randint, random
 from utils.mappings import confmap2ra
 from utils import find_nearest
 from config import radar_configs
-from slice3d import produce_RA_slice
 
 
 Max_trans_agl = 20
@@ -353,7 +354,6 @@ def transition_range(data, data_rv, confmap, trans_range=None):
             return data, None, confmap
 
 
-
 def Aug_data(data, data_rv, data_va, confmap, type=None):
     if type == 'mix':
         prob = random()
@@ -383,86 +383,52 @@ def Aug_data(data, data_rv, data_va, confmap, type=None):
 
 
 if __name__ == '__main__':
-    # print(angle_grid)
-    # a = np.array([[1, 2, 3], [4, 5, 6]])
-    # print(np.linspace(a[0,:], a[1, :], num=5))
-    # a = np.ones((128,3,2))
-    # b = map_angle(a, 7, 1)
-    # print(b)
+    # open a file, where you stored the pickled data
+    file = open('./data/confmaps_gt/train/2019_04_30_pbms002.pkl', 'rb')
+    all_confmap = pickle.load(file)   # dump information to that file
+    file.close()    # close the file
+    # confidence map of first frame
+    confmap = all_confmap[0][0][0:3]
+    confmap = np.reshape(confmap, (1, 3, 1, 128, 128))
 
-    # # open a file, where you stored the pickled data
-    # file = open('/home/admin-cmmb/Documents/RODNet_dop/data/confmaps_gt/train_all/2019_04_09_bms1000.pkl', 'rb')
-    # # dump information to that file
-    # all_confmap = pickle.load(file)
-    # # close the file
-    # file.close()
-    # confmap = all_confmap[0][0][0:3]
-    # confmap = np.reshape(confmap, (1, 3, 1, 128, 128))
-    # print(confmap.shape)
-    data = np.load('/mnt/sda/3DRadardata/2019_04_09/2019_04_09_bms1000/RA_NPY/0000/000000.npy')
-    data_amp = data[:, :, 0]**2 + data[:, :, 1]**2
-    plt.figure()
-    plt.imshow(data_amp, vmax=0.01)
-    plt.gca().invert_yaxis()
-    # plt.show()
-    #
-    # data = np.transpose(data, (2, 0, 1))
-    # # print(data.shape)
-    # data = np.reshape(data, (1, 2, 1, 128, 128))
-    # # print(data.shape)
-    # data = torch.from_numpy(data)
-    # confmap = torch.from_numpy(confmap)
-    # data, _, confmap = transition_range(data, None, confmap, trans_range=-20)
-    # # data, _, confmap = transition_angle(data, None, confmap, trans_angle=None)
-    # data_amp1 = data[0, 0, 0, :, :]**2 + data[0, 1, 0, :, :]**2
-    # plt.figure()
-    # plt.imshow(data_amp1, vmax=0.01)
-    # plt.gca().invert_yaxis()
-    # plt.show()
+    data = np.load('template_files/train_test_data/2019_04_30/2019_04_30_pbms002/RA_NPY/0000/000000.npy')
+    data_amp = data[:, :, 0] ** 2 + data[:, :, 1] ** 2
 
-    mat_data_dir = '/media/admin-cmmb/Elements/CRdataset/2019_04_09/2019_04_09_bms1000/WIN_R_MAT/2019_04_09_bms1000_000003.mat'
-    mat = spio.loadmat(mat_data_dir, squeeze_me=True)
-    data = np.asarray(mat["R_data"])
-    # shift_range
-    shift_range = 1
-    shift_angle = -30 # in degrees
-    shift_angle = math.radians(shift_angle)
-    compen_agl = np.arange(8) * shift_angle
-    compen_agl = np.reshape(compen_agl, (1, -1, 1))
-    data_new = np.zeros_like(data)
-    if shift_range > 0:
-        compen_mag = np.divide(range_grid[0:128 - shift_range], range_grid[shift_range:128]) ** 2
-        compen_mag = np.reshape(compen_mag, (-1, 1, 1))
-        compen_pha = np.divide(range_grid[0:128 - shift_range], range_grid[shift_range:128])
-        compen_pha = np.reshape(compen_pha, (-1, 1, 1))
-        data_new[shift_range:128, :, :] = data[0:128 - shift_range, :, :] * compen_mag
-        # compensate the phase change
-        angle = np.angle(data_new[shift_range:128, :, :])
-        angle[angle < 0] += 2 * math.pi
-        angle = angle * compen_pha
-        angle = angle + compen_agl
-        amp = np.abs(data_new[shift_range:128, :, :])
-        data_new[shift_range:128, :, :] = amp * np.cos(angle) + amp * np.sin(angle) * 1j
+    data = np.transpose(data, (2, 0, 1))
+    data = np.reshape(data, (1, 2, 1, 128, 128))
 
-    elif shift_range < 0:
-        shift_range = abs(shift_range)
-        compen_mag = np.divide(range_grid[shift_range:128], range_grid[0:128 - shift_range]) ** 2
-        compen_mag = np.reshape(compen_mag, (-1, 1, 1))
-        compen_pha = np.divide(range_grid[shift_range:128], range_grid[0:128 - shift_range])
-        compen_pha = np.reshape(compen_pha, (-1, 1, 1))
-        data_new[0:128 - shift_range, :, :] = data[shift_range:128, :, :] * compen_mag
-        angle = np.angle(data_new[0:128 - shift_range, :, :])
-        angle[angle < 0] += 2 * math.pi
-        angle = angle * compen_pha
-        angle = angle + compen_agl
-        amp = np.abs(data_new[0:128 - shift_range, :, :])
-        data_new[0:128 - shift_range, :, :] = amp * np.cos(angle) + amp * np.sin(angle) * 1j
+    data = torch.from_numpy(data)
+    confmap = torch.from_numpy(confmap)
 
-    ra_data = produce_RA_slice(data_new)
-    data_amp = ra_data[:, :, 0, 0] ** 2 + ra_data[:, :, 0, 1] ** 2
-    plt.figure()
-    plt.imshow(data_amp, vmax=0.01)
-    plt.gca().invert_yaxis()
-    # print(data_new.shape)
-    # print(ra_data.shape)
+    # range translation 10 (move up 10 bins)
+    data_shift_range, _, confmap_shift_range = transition_range(data, None, confmap, trans_range=10)
+    # angle translation 25 (move right 25 degrees)
+    data_shift_angle, _, confmap_shift_angle = transition_angle(data, None, confmap, trans_angle=25)
+    # flip angle
+    data_flip, _, confmap_flip = Flip(data, None, confmap)
+
+    data_amp1 = data_shift_range[0, 0, 0, :, :] ** 2 + data_shift_range[0, 1, 0, :, :] ** 2
+    data_amp2 = data_shift_angle[0, 0, 0, :, :] ** 2 + data_shift_angle[0, 1, 0, :, :] ** 2
+    data_amp3 = data_flip[0, 0, 0, :, :] ** 2 + data_flip[0, 1, 0, :, :] ** 2
+
+    # Create 1x3 sub plots
+    gs = gridspec.GridSpec(1, 4)
+    # visualize original image and augmentated images
+    plt.figure(tight_layout=True)
+    ax = plt.subplot(gs[0, 0])  # row 0, col 0
+    plt.imshow(data_amp, vmax=0.01, origin='lower')
+    ax.set_title("Original RA image")
+
+    ax = plt.subplot(gs[0, 1])  # row 0, col 1
+    plt.imshow(data_amp1, vmax=0.01, origin='lower')
+    ax.set_title("Range-shift RA image")
+
+    ax = plt.subplot(gs[0, 2])  # row 0, col 2
+    plt.imshow(data_amp2, vmax=0.01, origin='lower')
+    ax.set_title("Angle-shift RA image")
+
+    ax = plt.subplot(gs[0, 3])  # row 0, col 3
+    plt.imshow(data_amp3, vmax=0.01, origin='lower')
+    ax.set_title("Angle-flip RA image")
+
     plt.show()
