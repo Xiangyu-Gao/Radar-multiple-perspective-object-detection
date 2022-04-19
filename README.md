@@ -29,11 +29,12 @@ In this paper, we propose a novel radar multiple-perspectives convolutional neur
 Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up libraries.)
 
 ### Download Sample Data and Model
+1. From below Google Drive link
     ```
     https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
     ```
 
-    Decompress the downloaded files and Put the decompressed sample data and trained model in folder as follow:
+2. Decompress the downloaded files and relocate them as following directory manners:
     ```
     './template_files/slice_sample_data'
     './template_files/train_test_data'
