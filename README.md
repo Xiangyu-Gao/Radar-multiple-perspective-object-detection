@@ -23,7 +23,7 @@ Millimeter-wave radars are being increasingly integrated into commercial vehicle
 In this paper, we propose a novel radar multiple-perspectives convolutional neural network (RAMP-CNN) that extracts location and class of objects based on further processing of the rangevelocity-angle (RVA) heatmap sequences. To bypass the complexity of 4D convolutional neural networks, we propose to combine several lower-dimension NN models within our RAMP-CNN model that nonetheless approaches the performance upperbound with lower complexity. The extensive experiments show that the proposed RAMP-CNN model achieves better average recall and average precision than prior works in all testing scenarios. Besides, the RAMP-CNN model is validated to work robustly under the nighttime, which enables low-cost radars as a potential substitute for pure optical sensing under severe conditions.
 
 ## Highlights
-<p align="center"> <img src='docs/res.png' align="center" height="300px"> </p>
+<p align="center"> <img src='docs/res.png' align="center" height="230px"> </p>
 
 ## Use RAMP-CNN
 
