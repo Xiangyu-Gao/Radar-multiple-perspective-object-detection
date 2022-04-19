@@ -48,6 +48,7 @@ For convenience, in the sample codes we use the [Range FFT result](https://githu
     ```
     python slice3d.py
     ```
+    
 The slicing resulsts are the RA slices, RV slices, and VA slices as shown in below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
