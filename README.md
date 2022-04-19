@@ -26,7 +26,7 @@ In this paper, we propose a novel radar multiple-perspectives convolutional neur
 
 ### Software Requirement and Installation
 
-Python 3.6, pytorch-1.5.1 (Please refer to [INSTALL](docs/INSTALL.md) to set up libraries.)
+Python 3.6, pytorch-1.5.1 (Please refer to [INSTALL](requirements.txt) to set up libraries.)
 
 ### Download Sample Data and Model
 
