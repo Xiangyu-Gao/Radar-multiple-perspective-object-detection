@@ -1,11 +1,11 @@
 # Radar_multiple_perspective_object_detection
 
-Automotive Radar Object Recognition by Processing of the Range-Velocity-Angle (RVA) heatmap sequences.
+Automotive Radar Object Recognition Using Range-Velocity-Angle (RVA) Heatmap Sequences
 
 <p align="center"> <img src='docs/grap_abs.png' align="center" height="230px"> </p>
 
 > [**RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition**](https://arxiv.org/pdf/2011.08981.pdf),            
-> Xiangyu Gao, Guanbin Xing, Sumit Roy and Hui Liu
+> Xiangyu Gao, Guanbin Xing, Sumit Roy, and Hui Liu
 > *arXiv technical report ([arXiv 2006.11275](https://arxiv.org/abs/2011.08981))*  
 
     @ARTICLE{9249018,  author={Gao, Xiangyu and Xing, Guanbin and Roy, Sumit and Liu, Hui},  
@@ -13,8 +13,22 @@ Automotive Radar Object Recognition by Processing of the Range-Velocity-Angle (R
         title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   
         year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 
-## Software requirement
-Python 3.6, pytorch-1.5.1
+## Contact
+Any questions or suggestions are welcome! 
+
+Xiangyu Gao [xygao@uw.edu](mailto:xygao@uw.edu) 
+
+## Abstract
+Millimeter-wave (mmW) radars are being increasingly integrated into commercial vehicles to support new advanced driver-assistance systems (ADAS) by enabling robust and high-performance object detection, localization, as well as recognition - a key component of new environmental perception.
+In this paper, we propose a novel radar multiple-perspectives convolutional neural network (RAMP-CNN) that extracts location and class of objects based on further processing of the rangevelocity-angle (RVA) heatmap sequences. To bypass the complexity of 4D convolutional neural networks (NN), we propose to combine several lower-dimension NN models within our RAMPCNN model that nonetheless approaches the performance upperbound with lower complexity. The extensive experiments show that the proposed RAMP-CNN model achieves better average recall (AR) and average precision (AP) than prior works in all testing scenarios. Besides, the RAMP-CNN model is validated to work robustly under the nighttime, which enables low-cost radars as a potential substitute for pure optical sensing under severe conditions.
+
+## Use RAMP-CNN
+
+### Software Requirement and Installation
+
+Python 3.6, pytorch-1.5.1 (Please refer to [INSTALL](docs/INSTALL.md) to set up libraries.)
+
+### Download Sample Data and Model
 
 ## 3D slice
 for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification
@@ -69,3 +83,13 @@ for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-sign
     ```
     python evaluate.py -md C3D-20200904-001923
     ```
+
+## License
+
+RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
+
+## Acknowlegement
+This project is not possible without multiple great opensourced codebases. We list some notable examples below.  
+
+* [microDoppler](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification)
+* [rodnet](https://github.com/yizhou-wang/RODNet)
