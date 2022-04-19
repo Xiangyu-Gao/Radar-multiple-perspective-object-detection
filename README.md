@@ -24,6 +24,8 @@ In this paper, we propose a novel radar multiple-perspectives convolutional neur
 
 ## Use RAMP-CNN
 
+Please find all radar configurations and algorithm configurations are included in [config](config.py).
+
 ### Software Requirement and Installation
 
 Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up libraries.)
@@ -42,16 +44,16 @@ Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up
     ```
 
 ## 3D Slicing of Range-Velocity-Angle Data
-for 3D FFT please refer to repo https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification. All radar configurations and algorithm configurations are included in [config](config.py).
-
-    Customize your testbed/FMCW parameter in script: 
+For convenience, in the sample codes we use the [Range FFT result](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) as input and perform the Velocity and Angle FFT during the process of slicing. Run following codes for 3D slicing.
     ```
     python slice3d.py
     ```
+The slicing resulsts are the RA slices, RV slices, and VA slices as shown in below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
 ## Radar Data Augmentation
     To be continue ..
+
 ## Train and Test
 1. Download sample data and model from the Google Drive with below link:
     Note that we select part of our training and testing set for your use here and the provided model was trainied with whole complete training set. You may use below slicing algorithm with 3DFFT data to create your own training and testing set.
