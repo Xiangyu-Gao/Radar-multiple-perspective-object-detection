@@ -56,7 +56,7 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
 ## Train and Test
-1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing:
+1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing. Note that the training and testing data is in the post-3D slcie format, so you can skip the last step if you used the provided training and testing data here:
     ```
     python prepare_data.py -m train -dd './data/'
     python prepare_data.py -m test -dd './data/'
