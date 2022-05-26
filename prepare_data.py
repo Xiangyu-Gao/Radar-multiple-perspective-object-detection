@@ -21,7 +21,7 @@ def parse_args():
 
 
 def prepare_data(sets, set_type='train', viz=False):
-    root_dir_npy = './template_files/data/'
+    root_dir_npy = './template_files/train_test_data/'
     sets_dates = sets['dates']
     sets_seqs = sets['seqs']
 
