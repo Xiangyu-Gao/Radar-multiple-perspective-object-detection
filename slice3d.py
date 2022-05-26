@@ -121,7 +121,7 @@ def main():
         cap_folder_dir = os.path.join(root_dir, capture_date)
         seqs = sorted(os.listdir(cap_folder_dir))
         for seq in seqs:
-            seq_dir = os.path.join(cap_folder_dir, seq, 'WIN_R_MAT')
+            seq_dir = os.path.join(cap_folder_dir, seq)
             files = sorted(os.listdir(seq_dir))
             print('Processing ', seq)
             for idf, file in enumerate(files[0:1]):
