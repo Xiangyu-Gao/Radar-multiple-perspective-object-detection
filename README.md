@@ -49,7 +49,7 @@ Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up
     ```
 
 ## 3D Slicing of Range-Velocity-Angle Data
-For convenience, in the sample codes we use the raw ADC data of each frame (https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) as input and perform the Range, Velocity, and Angle FFT during the process of slicing. Run following codes for 3D slicing.
+For convenience, in the sample codes we use the raw ADC data of each frame as input and perform the [Range, Velocity, and Angle FFT](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) during the process of slicing. Run following codes for 3D slicing.
     
     python slice3d.py
     
