@@ -8,8 +8,10 @@ from config import radar_configs
 
 n_angle = 128
 n_vel = 128
+n_range = 128
 n_chirp = 255
 n_rx = 8
+n_sample = 128
 noma_rcs = 30000
 range_grid = confmap2ra(radar_configs, name='range')
 
@@ -98,6 +100,18 @@ def produce_RCSmap(data):
     return rcs_data
 
 
+def range_fft(data):
+    hanning_win = np.hamming(n_sample)
+    win_data = np.zeros([data.shape[0], data.shape[1], data.shape[2]], dtype=np.complex128)
+    for i in range(data.shape[1]):
+        for j in range(data.shape[2]):
+            win_data[:, i, j] = np.multiply(data[:, i, j], hanning_win)
+    fft_data_raw = np.fft.fft(win_data, n_range, axis=0)
+
+    return fft_data_raw
+
+
+
 def save_ra_slice(data, save_dir_ra, new_file_name):
     for i in range(data.shape[2]):
         save_fod = os.path.join(save_dir_ra, str(i).zfill(4))
@@ -127,7 +141,9 @@ def main():
             for idf, file in enumerate(files[0:1]):
                 file_dir = os.path.join(seq_dir, file)
                 mat = spio.loadmat(file_dir, squeeze_me=True)
-                data = np.asarray(mat["R_data"])
+                data = np.asarray(mat["adc_data"])
+                # Range FFT
+                data = range_fft(data)
                 # generate RV slice
                 RV_slice, rv_raw1, rv_raw2 = produce_RV_slice(data) # (128, 128, 2)
                 # generate VA slice
