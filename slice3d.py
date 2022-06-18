@@ -111,7 +111,6 @@ def range_fft(data):
     return fft_data_raw
 
 
-
 def save_ra_slice(data, save_dir_ra, new_file_name):
     for i in range(data.shape[2]):
         save_fod = os.path.join(save_dir_ra, str(i).zfill(4))
