@@ -1,12 +1,12 @@
 # directory settings
 data_sets = {
-    'root_dir': "/mnt/nas_crdataset2",
+    'root_dir': "template_files/train_test_data",
     'dates': ['2019_04_30', '2019_05_28'],
     'cam_anno': [False, False],
 }
 
 train_sets = {
-    'root_dir': "/mnt/nas_crdataset",
+    'root_dir': "template_files/train_test_data",
     'dates': ['2019_04_30'],
     'seqs': [
         ['2019_04_30_pbms002'],
@@ -15,7 +15,7 @@ train_sets = {
 }
 
 valid_sets = {
-    'root_dir': "/mnt/nas_crdataset",
+    'root_dir': "template_files/train_test_data",
     'dates': ['2019_05_28'],
     'seqs': [
         ['2019_05_28_pm2s012']
@@ -23,7 +23,7 @@ valid_sets = {
 }
 
 test_sets = {
-    'root_dir': "/mnt/nas_crdataset",
+    'root_dir': "template_files/train_test_data",
     'dates': ['2019_05_28'],
     'seqs': [
         ['2019_05_28_pm2s012']
@@ -143,7 +143,7 @@ rodnet_configs = {
     'peak_thres': 0.2,
     'ols_thres': 0.2,
     'stacked_num': 2,
-    'test_stride': 2,
+    'test_stride': 8,
 }
 
 semi_loss_err_reg = {

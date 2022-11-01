@@ -8,7 +8,6 @@ from torch.utils.data import DataLoader
 from postprocess import post_processing, post_processing_single_timestamp, write_dets_results_single_timestamp
 from utils import str2bool
 from utils import chirp_amp
-from utils.dataset_tools import fix_cam_drop_frames
 from utils.visualization import visualize_test_img, visualize_test_img_wo_gt
 from config import n_class, test_sets, camera_configs, radar_configs, rodnet_configs
 from config import mean1, std1, mean2, std2, mean1_rv, std1_rv, mean2_rv, std2_rv, mean1_va, std1_va, mean2_va, std2_va
@@ -173,7 +172,7 @@ if __name__ == "__main__":
             seq_name = seq_names[seq_id]
             seq_path = os.path.join(test_sets['root_dir'], seq_name[:10], seq_name)
             if int(seq_name[5:7]) < 9 and int(seq_name[0:4]) == 2019:
-                image_folder = 'images'
+                image_folder = 'camera image'
                 if Norm:
                     data = (data - mean1) / std1
                     print('finished ra normalization')
@@ -182,27 +181,21 @@ if __name__ == "__main__":
                         data_rv = (data_rv - mean1_rv) / std1_rv
                         data_va = (data_va - mean1_va) / std1_va
             elif int(seq_name[5:7]) >= 9 and int(seq_name[0:4]) == 2019:
-                image_folder = 'images_0'
+                image_folder = 'camera image'
                 if Norm:
                     data = (data - mean2) / std2
                     if args.model == 'C3D':
                         data_rv = (data_rv - mean2_rv) / std2_rv
                         data_va = (data_va - mean2_va) / std2_va
 
-            cam_delay = ra_frame_offset
             try:
                 img_paths = sorted(os.listdir(os.path.join(seq_path, image_folder)))
             except:
-                img_paths = sorted(os.listdir(os.path.join(seq_path, 'images')))
-
-
-            if CAM_DROP_FRAME:
-                img_paths_fixed = fix_cam_drop_frames(seq_path, img_paths)
-            else:
-                img_paths_fixed = img_paths
+                img_paths = sorted(os.listdir(os.path.join(seq_path, 'camera_image')))
+                image_folder = 'camera_image'
 
             save_path = os.path.join(test_res_dir, seq_name, 'rod_res.txt')
-            print("Testing %s/%06d-%06d... (%d)" % (seq_name, ra_frame_offset + data_id, ra_frame_offset + data_id+win_size, cam_delay))
+            print("Testing %s/%06d-%06d... (%d)" % (seq_name, ra_frame_offset + data_id, ra_frame_offset + data_id+win_size, 0))
 
             tic = time.time()
 
@@ -232,16 +225,15 @@ if __name__ == "__main__":
 
             for i in range(rodnet_configs['test_stride']):
                 total_count += 1
-                imgid = data_id + i + camera_configs['frame_expo']
                 radid = ra_frame_offset + data_id + i
                 res_final = post_processing_single_timestamp(init_genConfmap.confmap, rodnet_configs['peak_thres'])
                 write_dets_results_single_timestamp(res_final, radid, save_path)
                 confmap_pred_0 = init_genConfmap.confmap
                 res_final_0 = res_final
-                img_path = os.path.join(seq_path, image_folder, img_paths_fixed[imgid])
+                img_path = os.path.join(seq_path, image_folder, img_paths[0])   # we only provide one image so always index 0
 
                 radar_input = chirp_amp(radar_input_win[0, :, i, :, :])
-                fig_name = os.path.join(test_res_dir, seq_name, 'rod_viz', '%010d.jpg' % (imgid))
+                fig_name = os.path.join(test_res_dir, seq_name, 'rod_viz', '%010d.jpg' % (radid))
 
                 if confmap_gt is not None:
                     confmap_gt_0 = confmap_gt[0, :, i, :, :]
@@ -252,7 +244,6 @@ if __name__ == "__main__":
 
             if iter == len(dataloader) - 1:
                 offset = rodnet_configs['test_stride']
-                imgid = data_id + offset + camera_configs['frame_expo']
                 radid = ra_frame_offset + data_id + offset
 
                 while init_genConfmap is not None:
@@ -261,9 +252,9 @@ if __name__ == "__main__":
                     write_dets_results_single_timestamp(res_final, radid, save_path)
                     confmap_pred_0 = init_genConfmap.confmap
                     res_final_0 = res_final
-                    img_path = os.path.join(seq_path, image_folder, img_paths_fixed[imgid])
+                    img_path = os.path.join(seq_path, image_folder, img_paths[0])
                     radar_input = chirp_amp(radar_input_win[0, :, offset, :, :])
-                    fig_name = os.path.join(test_res_dir, seq_name, 'rod_viz', '%010d.jpg' % (imgid))
+                    fig_name = os.path.join(test_res_dir, seq_name, 'rod_viz', '%010d.jpg' % (radid))
 
                     if confmap_gt is not None:
                         confmap_gt_0 = confmap_gt[0, :, offset, :, :]
@@ -273,7 +264,6 @@ if __name__ == "__main__":
 
                     init_genConfmap = init_genConfmap.next
                     offset += 1
-                    imgid += 1
                     radid += 1
 
             if init_genConfmap is None:

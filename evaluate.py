@@ -1,16 +1,12 @@
 import os
-import math
 import numpy as np
 import argparse
 
-from utils import pol2cart
 from utils.mappings import confmap2ra
-from utils.read_annotations import read_ra_labels_csv, read_3d_labels_txt
+from utils.read_annotations import read_ra_labels_csv
 from utils.ols import get_ols_btw_objects
-from utils.visualization import visualize_ols_hist
-from utils.dataset_tools import calculate_frame_offset
 
-from config import n_class, class_table, class_ids, object_sizes
+from config import n_class, class_table, class_ids
 from config import radar_configs, rodnet_configs
 from config import test_sets
 
@@ -387,7 +383,7 @@ if __name__ == '__main__':
         python evaluate.py -md C3D-20200904-001923 -rd ./results/
     """
     args = parse_args()
-    data_root = '/mnt/nas_crdataset'
+    data_root = 'template_files/train_test_data'
     rodnet_res_folder = args.res_dir
 
     if args.model_dir is None:
@@ -458,9 +454,3 @@ if __name__ == '__main__':
 
     eval = accumulate(evalImgs_easy, n_frames_easy)
     stats = summarize(eval)
-    # eval = accumulate(evalImgs_mid, n_frames_mid)
-    # stats = summarize(eval)
-    # eval = accumulate(evalImgs_hard, n_frames_hard)
-    # stats = summarize(eval)
-
-    # visualize_ols_hist(ols_list)

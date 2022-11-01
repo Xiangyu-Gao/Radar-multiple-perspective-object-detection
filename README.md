@@ -89,20 +89,21 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     ```
     You will get testing outputs as follows:
     ```
-    ['2019_05_28_pm2s012']
-    2019_05_28_pm2s012
-    Length of testing data: 443
-    loading time: 0.02
-    finished ra normalization
-    finished v normalization
-    Testing 2019_05_28_pm2s012/000000-000016... (0)
-    2019_05_28_pm2s012/0000000000.jpg inference finished in 0.6654 seconds.
-    processing time: 0.98
-    loading time: 0.02
-    finished ra normalization
-    finished v normalization
-    Testing 2019_05_28_pm2s012/000002-000018... (0)
-    2019_05_28_pm2s012/0000000002.jpg inference finished in 0.4723 seconds.
+   rodnet_21_0000087601_000001.pkl
+   ['2019_05_28_pm2s012']
+   2019_05_28_pm2s012
+   Length of testing data: 111
+   loading time: 0.02
+   finished ra normalization
+   finished v normalization
+   Testing 2019_05_28_pm2s012/000000-000016... (0)
+   2019_05_28_pm2s012/0000000000.jpg inference finished in 0.6613 seconds.
+   processing time: 3.69
+   loading time: 0.02
+   finished ra normalization
+   finished v normalization
+   Testing 2019_05_28_pm2s012/000008-000024... (0)
+   2019_05_28_pm2s012/0000000008.jpg inference finished in 0.5039 seconds.
     ...
     ```
 4. Run evaluation:
@@ -112,19 +113,19 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     You will get evaluation outputs as follows:
     ```
     true seq
-    ./results/C3D-20200904-001923/2019_05_28_pm2s012/rod_res.txt
-    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9245
-    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9701
-    pedestrian: 1930 dets, 1800 gts
-    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9245
-    Average Precision  (AP) @[ OLS=0.50      ] = 0.9823
-    Average Precision  (AP) @[ OLS=0.60      ] = 0.9823
-    Average Precision  (AP) @[ OLS=0.70      ] = 0.9520
-    Average Precision  (AP) @[ OLS=0.80      ] = 0.9234
-    Average Precision  (AP) @[ OLS=0.90      ] = 0.7349
-    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9701
-    Average Recall     (AR) @[ OLS=0.50      ] = 1.0000
-    Average Recall     (AR) @[ OLS=0.75      ] = 0.9850
+   ./results/C3D-20200904-001923/2019_05_28_pm2s012/rod_res.txt
+    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9126
+    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9653
+   pedestrian: 1913 dets, 1792 gts
+    Average Precision  (AP) @[ OLS=0.50:0.90 ] = 0.9126
+    Average Precision  (AP) @[ OLS=0.50      ] = 0.9713
+    Average Precision  (AP) @[ OLS=0.60      ] = 0.9713
+    Average Precision  (AP) @[ OLS=0.70      ] = 0.9489
+    Average Precision  (AP) @[ OLS=0.80      ] = 0.9062
+    Average Precision  (AP) @[ OLS=0.90      ] = 0.7053
+    Average Recall     (AR) @[ OLS=0.50:0.90 ] = 0.9653
+    Average Recall     (AR) @[ OLS=0.50      ] = 0.9994
+    Average Recall     (AR) @[ OLS=0.75      ] = 0.9821
     ...
     ```
 
