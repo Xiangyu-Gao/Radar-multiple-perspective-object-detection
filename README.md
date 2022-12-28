@@ -142,7 +142,9 @@ Below figure shows the performance of doing 10-bins range-translation (move upwo
 RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
 
 ## Acknowlegement
-This project is not possible without multiple great opensourced codebases. We list some notable examples below.  
+This project is not possible without multiple great opensourced codebase and dataset. We list some notable examples below.  
 
 * [microDoppler](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification)
 * [rodnet](https://github.com/yizhou-wang/RODNet)
+* [raw_ADC_radar_dataset_for_automotive_object_detection](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection)
+* [raw_2D_MIMO_radar_dataset_for_carry_object_detection](https://github.com/Xiangyu-Gao/Raw_2D_MIMO_radar_dataset_for_carry_object_detection)
