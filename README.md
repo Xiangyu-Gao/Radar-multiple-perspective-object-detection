@@ -16,6 +16,8 @@ Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-An
 ## Update
 ***(June 17, 2022) The input data for slice3d.py script has been changed to the raw ADC data now [slice_sample_data](https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing).***
 
+***(June 2, 2023) We provided an [instruction](./docs/UseUWCR.md) for converting the annotations from [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection) format to our format in [convert_annotations.py](./utils/convert_annotations.py).***
+
 ## Contact
 Any questions or suggestions are welcome! 
 
@@ -136,6 +138,11 @@ Run below codes to check the results of 3 proposed data augmentation algorithms:
 
 Below figure shows the performance of doing 10-bins range-translation (move upword), 25-degrees angle-translation (move rightword), and angle flip on original RA images. You may use this codes to develop your radar data augmentation and even generate new datas. 
 <p align="center"> <img src='docs/aug_viz.png' align="center" height="230px"> </p>
+
+## Use the UWCR Dataset
+If you want to explore more radar raw data in the [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection), it is necessary to make the data/annotation format conversion since the sample data and labels used this repository have different structures from that in the UWCR dataset.
+
+Please refer to the [UseUWCR](./docs/UseUWCR.md) for the annotation format conversion.
 
 ## License
 
