@@ -14,6 +14,8 @@ Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-An
         year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 
 ## Update
+***(Sep. 12, 2023) We updated the [instruction](./docs/UseUWCR.md) for converting the radar ADC data from [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection) to the training/testing data format used in this repo.***
+
 ***(June 17, 2022) The input data for slice3d.py script has been changed to the raw ADC data now [slice_sample_data](https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing).***
 
 ***(June 2, 2023) We provided an [instruction](./docs/UseUWCR.md) for converting the annotations from [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection) format to our format in [convert_annotations.py](./utils/convert_annotations.py).***
@@ -142,7 +144,7 @@ Below figure shows the performance of doing 10-bins range-translation (move upwo
 ## Use the UWCR Dataset
 If you want to explore more radar raw data in the [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection), it is necessary to make the data/annotation format conversion since the sample data and labels used this repository have different structures from that in the UWCR dataset.
 
-Please refer to the [UseUWCR](./docs/UseUWCR.md) for the annotation format conversion.
+Please refer to the [UseUWCR](./docs/UseUWCR.md) for the annotation format conversion and training/testing data conversion.
 
 ## License
 
