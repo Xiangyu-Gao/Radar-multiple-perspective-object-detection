@@ -144,7 +144,7 @@ Below figure shows the performance of doing 10-bins range-translation (move upwo
 ## Use the UWCR Dataset
 If you want to explore more radar raw data in the [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection), it is necessary to make the data/annotation format conversion since the sample data and labels used this repository have different structures from that in the UWCR dataset.
 
-Please refer to the [UseUWCR](./docs/UseUWCR.md) for the annotation format conversion and training/testing data conversion.
+Please refer to the instruction [UseUWCR](./docs/UseUWCR.md) for the annotation format conversion and training/testing data conversion.
 
 ## License
 
