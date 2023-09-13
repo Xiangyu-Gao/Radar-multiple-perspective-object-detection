@@ -123,7 +123,7 @@ def save_ra_slice(data, save_dir_ra, new_file_name):
 def main():
     """
     This function preprocess the raw data and save the data to the local
-    Input: RV data cube and RA data cube
+    Input: raw ADC data
     Output: RA slice (real and imaginary part of the first chirp after the denoise)
     RV slice (accumulate along the Angle domain)
     VA slice (accumulate along the Range domain)
