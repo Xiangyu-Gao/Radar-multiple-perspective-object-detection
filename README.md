@@ -13,7 +13,7 @@ Automotive Radar Object Recognition in the Bird-eye View Using Range-Velocity-An
         title={RAMP-CNN: A Novel Neural Network for Enhanced Automotive Radar Object Recognition},   
         year={2021},  volume={21},  number={4},  pages={5119-5132},  doi={10.1109/JSEN.2020.3036047}}
 
-## Update
+## Important Updates
 ***(Sep. 12, 2023) We updated the [instruction](./docs/UseUWCR.md) for converting the radar ADC data from [UWCR dataset](https://github.com/Xiangyu-Gao/Raw_ADC_radar_dataset_for_automotive_object_detection) to the training/testing data format used in this repo.***
 
 ***(June 17, 2022) The input data for slice3d.py script has been changed to the raw ADC data now [slice_sample_data](https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing).***
