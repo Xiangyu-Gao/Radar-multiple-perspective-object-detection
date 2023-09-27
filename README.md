@@ -39,7 +39,7 @@ All radar configurations and algorithm configurations are included in [config](c
 
 Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up libraries.)
 
-Linux system (Preferred). *If using Windows, please update the Linux-format paths in scripts, e.g., '/'->'\' or '\\'.*
+Linux system (Preferred). *If using Windows, please update the Linux-format paths in scripts, e.g., '/'->'&#92' or '&#92&#92'.*
 
 ### Download Sample Data and Model
 1. From the below Google Drive link
