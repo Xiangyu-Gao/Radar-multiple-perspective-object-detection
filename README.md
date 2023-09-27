@@ -26,7 +26,7 @@ Any questions or suggestions are welcome!
 Xiangyu Gao [xygao@uw.edu](mailto:xygao@uw.edu) 
 
 ## Abstract
-Millimeter-wave radars are being increasingly integrated into commercial vehicles to support new advanced driver-assistance systems by enabling robust and high-performance object detection, localization, as well as recognition - a key component of new environmental perception. In this paper, we propose a novel radar multiple-perspectives convolutional neural network (RAMP-CNN) that extracts location and class of objects based on further processing of the rangevelocity-angle (RVA) heatmap sequences. To bypass the complexity of 4D convolutional neural networks, we propose to combine several lower-dimension NN models within our RAMP-CNN model that nonetheless approaches the performance upperbound with lower complexity. The extensive experiments show that the proposed RAMP-CNN model achieves better average recall and average precision than prior works in all testing scenarios. Besides, the RAMP-CNN model is validated to work robustly under the nighttime, which enables low-cost radars as a potential substitute for pure optical sensing under severe conditions.
+Millimeter-wave radars are being increasingly integrated into commercial vehicles to support new advanced driver-assistance systems by enabling robust and high-performance object detection, localization, as well as recognition - a key component of new environmental perception. In this paper, we propose a novel radar multiple-perspectives convolutional neural network (RAMP-CNN) that extracts the location and class of objects based on further processing of the range-velocity-angle (RVA) heatmap sequences. To bypass the complexity of 4D convolutional neural networks, we propose to combine several lower-dimension NN models within our RAMP-CNN model that nonetheless approach the performance upper bound with lower complexity. The extensive experiments show that the proposed RAMP-CNN model achieves better average recall and average precision than prior works in all testing scenarios. Besides, the RAMP-CNN model is validated to work robustly under the nighttime, which enables low-cost radars as a potential substitute for pure optical sensing under severe conditions.
 
 ## Highlights
 <p align="center"> <img src='docs/res.png' align="center" height="230px"> </p>
@@ -38,7 +38,8 @@ All radar configurations and algorithm configurations are included in [config](c
 ### Software Requirement and Installation
 
 Python 3.6, pytorch-1.5.1 (please refer to [INSTALL](requirements.txt) to set up libraries.)
-Linux system (Preferred). If using Windows, please update the Linux-format paths in scripts, e.g., '/'->'\' or '\\'
+
+Linux system (Preferred). *If using Windows, please update the Linux-format paths in scripts, e.g., '/'->'\' or '\\'.*
 
 ### Download Sample Data and Model
 1. From the below Google Drive link
@@ -46,7 +47,7 @@ Linux system (Preferred). If using Windows, please update the Linux-format paths
     https://drive.google.com/drive/folders/1TGW6BHi5EZsSCtTsJuwYIQVaIWjl8CLY?usp=sharing
     ```
 
-2. Decompress the downloaded files and relocate them as following directory manners:
+2. Decompress the downloaded files and relocate them as the following directory manners:
     ```
     './template_files/slice_sample_data'
     './template_files/train_test_data'
@@ -54,16 +55,16 @@ Linux system (Preferred). If using Windows, please update the Linux-format paths
     ```
 
 ## 3D Slicing of Range-Velocity-Angle Data
-For convenience, in the sample codes we use the raw ADC data of each frame as input and perform the [Range, Velocity, and Angle FFT](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) during the process of slicing. Run following codes for 3D slicing.
+For convenience, in the sample codes, we use the raw ADC data of each frame as input and perform the [Range, Velocity, and Angle FFT](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification) during the process of slicing. Run the following codes for 3D slicing.
     
     python slice3d.py
     
 
-The slicing results are the RA slices, RV slices, and VA slices as shown in below figure.
+The slicing results are the RA slices, RV slices, and VA slices as shown in the below figure.
 <p align="center"> <img src='docs/slice_viz.png' align="center" height="230px"> </p>
 
 ## Train and Test
-1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing. Note that the provided training and testing data is in the post-3D slicing format, so you can skip the last step if you used provided data here:
+1. Prepare the input data (RA, RV, and VA slices) and ground truth confidence map for training and testing. Note that the provided training and testing data is in the post-3D slicing format, so you can skip the last step if you use the provided data here:
     ```
     python prepare_data.py -m train -dd './data/'
     python prepare_data.py -m test -dd './data/'
@@ -135,11 +136,11 @@ The slicing results are the RA slices, RV slices, and VA slices as shown in belo
     ```
 
 ## Radar Data Augmentation
-Run below codes to check the results of 3 proposed data augmentation algorithms: flip, range-translation, and angle-translation.
+Run the below codes to check the results of 3 proposed data augmentation algorithms: flip, range-translation, and angle-translation.
 
     python data_aug.py
 
-Below figure shows the performance of doing 10-bins range-translation (move upword), 25-degrees angle-translation (move rightword), and angle flip on original RA images. You may use this codes to develop your radar data augmentation and even generate new datas. 
+The below figure shows the performance of doing 10-bin range-translation (move upword), 25-degree angle-translation (move rightword), and angle flip on original RA images. You may use these codes to develop your radar data augmentation and even generate new data. 
 <p align="center"> <img src='docs/aug_viz.png' align="center" height="230px"> </p>
 
 ## Use the UWCR Dataset
@@ -149,10 +150,10 @@ Please refer to the instruction [UseUWCR](./docs/UseUWCR.md) for the annotation 
 
 ## License
 
-RAMP-CNN is release under MIT license (see [LICENSE](LICENSE)).
+RAMP-CNN is released under an MIT license (see [LICENSE](LICENSE)).
 
 ## Acknowlegement
-This project is not possible without multiple great opensourced codebase and dataset. We list some notable examples below.  
+This project is not possible without multiple great open-source codebases and datasets. We list some notable examples below.  
 
 * [microDoppler](https://github.com/Xiangyu-Gao/mmWave-radar-signal-processing-and-microDoppler-classification)
 * [rodnet](https://github.com/yizhou-wang/RODNet)
