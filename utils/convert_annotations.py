@@ -47,7 +47,10 @@ def convert(seq_path):
         # parse a label file
         for line in label:
             line = line.rstrip().split(',')
-            type = release_dataset_label_map[int(line[1])]
+            if int(line[1]) in release_dataset_label_map:
+                type_ = release_dataset_label_map[int(line[1])]
+            else:
+                continue
 
             x = int(float(line[2]))
             y = int(float(line[3]))
@@ -55,7 +58,7 @@ def convert(seq_path):
             angle = math.degrees(math.atan(x / y))  # in degree
             rng_idx, _ = find_nearest(range_grid, distance)
             agl_idx, _ = find_nearest(angle_grid, angle)
-            obj_info.append([rng_idx, agl_idx, type])
+            obj_info.append([rng_idx, agl_idx, type_])
             region_count += 1
 
         for objId, obj in enumerate(obj_info):  # set up rows for different objs
